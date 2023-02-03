@@ -44,8 +44,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function bookmarkMoviesList()
-    {
-        return $this->hasMany(BookMarkMovie::class);
+    public function bookmarkMovieList(){
+        return $this->hasMany(BookmarkMovies::class , 'user_id');
     }
+
 }
