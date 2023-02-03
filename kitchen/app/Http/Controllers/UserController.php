@@ -3,24 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\UserHelper;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 
 class UserController extends Controller
 {
+    public function registerUser(Request $request)
+    {
+        $createUser = UserHelper::registerUserDetails($request);
+
+        return $createUser;
+    }
+
+    public function loginUser(Request $request)
+    {
+        $loginUserData = UserHelper::loginUser($request);
+
+        return $loginUserData;
+    }
+
     public function getSingleUserData(Request $request)
     {
         $userDetails = UserHelper::gettingUserData($request);
 
         return $userDetails;
-    }
-
-    public function addUser(Request $request)
-    {
-        $createUser = UserHelper::addUserDetails($request);
-
-        return $createUser;
     }
 
     public function updateUserName(Request $request)
@@ -37,10 +43,11 @@ class UserController extends Controller
         return $deletedUser;
     }
 
-    public function loginUser(Request $request)
+    public function logoutUser(Request $request)
     {
-        $loginUserData = UserHelper::loginUser($request);
+        $logoutUser = UserHelper::logoutUserData($request);
 
-        return $loginUserData;
+        return $logoutUser;
+
     }
 }

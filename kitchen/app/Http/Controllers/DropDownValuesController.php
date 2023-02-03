@@ -14,7 +14,7 @@ class DropDownValuesController extends Controller
         return response([
             "success" => true,
             "work_industry" => Constants::WORK_INDUSTRIES,
-            "user" => User::all(['name'])
+            "user" => User::all()
         ], Constants::HTTP_STATUS_CODE_OK);
     }
 };

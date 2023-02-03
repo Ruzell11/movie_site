@@ -14,14 +14,18 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });`
-
+// Public Routes
 Route::get('/dropdown', [DropDownValuesController::class, 'index']);
-Route::get('/get-user-data', [UserController::class, 'getSingleUserData']);
-Route::post('/add-user', [UserController::class, 'addUser']);
+Route::post('/add-user', [UserController::class, 'registerUser']);
 Route::post('/login-user', [UserController::class, 'loginUser']);
-Route::patch('/update-user', [UserController::class, 'updateUserName']);
-Route::delete('/delete-user', [UserController::class, 'deleteUser']);
+
+
+
+// Protected Routes
+Route::group(['middleware' => ['auth:sanctum']] , function () {
+    Route::get('/get-user-data', [UserController::class, 'getSingleUserData']);
+    Route::patch('/update-user', [UserController::class, 'updateUserName']);
+    Route::delete('/delete-user', [UserController::class, 'deleteUser']);
+    Route::post('/logout-user' , [UserController::class , 'logoutUser']);
+});
+
