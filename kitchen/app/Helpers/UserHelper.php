@@ -64,7 +64,7 @@ class UserHelper
 
     public static function gettingUserData($request)
     {
-        $id = $request->id;
+        $id = auth()->user()->id;
 
         if (!$id) {
             return response([
