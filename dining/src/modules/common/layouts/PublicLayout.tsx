@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import { Header } from "./components/Header";
 
 type ChildrenProps = {
     children: ReactNode;
@@ -7,9 +8,9 @@ type ChildrenProps = {
 export const PublicLayout = ({ children }: ChildrenProps) => (
     <>
         <div className="min-h-screen flex flex-col">
-            <header className="sticky top-0 h-14 flex justify-center items-center font-semibold uppercase">
-                Navbar
-            </header>
+          
+                <Header/>
+            
             <div className="flex flex-col md:flex-row flex-1">
                 <main className="flex-1">{children}</main>
             </div>
