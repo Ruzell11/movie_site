@@ -1,6 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\DropDownValuesController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +15,21 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+// Public Routes
+Route::get('/dropdown', [DropDownValuesController::class, 'index']);
+Route::post('/register-user', [UserController::class, 'registerUser']);
+Route::post('/login-user', [UserController::class, 'loginUser']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+
+// Protected Routes
+Route::group(['middleware' => ['auth:sanctum']] , function () {
+    Route::get('/get-user-data', [UserController::class, 'getSingleUserData']);
+    Route::patch('/update-user', [UserController::class, 'updateUserName']);
+    Route::delete('/delete-user', [UserController::class, 'deleteUser']);
+    Route::post('/logout-user' , [UserController::class , 'logoutUser']);
+
+    Route::post('/add-bookmark-movie' , [MovieController::class , 'addMovie']);
+    Route::get('/get-bookmark-movie-list' , [MovieController::class, 'getUserBookmarkList']);
 });
+
