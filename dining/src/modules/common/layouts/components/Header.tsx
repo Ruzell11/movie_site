@@ -1,38 +1,28 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Dropdown } from "antd"
-import Button from "antd/es/button";
-import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { LargeScreenNav } from "./LargeScreenNav"
+import { SmallScreenNav } from "./SmallScreenNav"
+import { UserLogin } from "./UserLogin"
+import React from "react"
 
- 
+
+
+
 export const Header = () => {
-    const items = [
-        {
-            key: '1',
-            label: (
-                <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-                    Login
-                </a>
-            ),
-        },
-        {
-            key: '2',
-            label: (
-                <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
-                   Sign Up
-                </a>
-            ),
-        },
-        
-    ];
     return (
-        <div className="flex justify-between bg-black items-center ">
-            <div className="p-3 cursor-pointer">
-               <a href="/"> <p className="text-white text-2xl font-bold font-serif">Movie<span className="text-red-700 text-1xl font-serif">T</span></p></a>
+        <header className="flex  space-x-2 md:space-x-10 bg-black p-10 justify-between items-center">
+            <div className="flex space-x-6 items-center">
+                <a href="/">
+                    <img src="http://www.pngall.com/wp-content/uploads/4/Netflix-Logo-HD.png"
+                        width={100}
+                        height={100}
+                        className="cursor-pointer object-contain"
+                    />
+                </a>
+                <LargeScreenNav />
             </div>
-            <ul className="flex space-x-4 font-semibold text-white px-3 cursor-pointer">
-              <a href="/login">  <li>Login</li></a>
-                <a href="/signup"><li>Sign Up</li></a>
-            </ul>
-        </div>
+            <div>
+                <UserLogin />
+            </div>
+            <SmallScreenNav />
+        </header>
     )
 }
