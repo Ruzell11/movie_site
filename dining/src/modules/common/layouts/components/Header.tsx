@@ -1,13 +1,28 @@
+import { LargeScreenNav } from "./LargeScreenNav"
+import { SmallScreenNav } from "./SmallScreenNav"
+import { UserLogin } from "./UserLogin"
+import React from "react"
 
 
 
- 
+
 export const Header = () => {
-return (
-        <div className="flex justify-between bg-black items-center p-5 ">
-            <div className="p-3 cursor-pointer">
-               <a href="/"> <p className="text-white text-3xl font-bold font-serif">Movie<span className="text-red-700 text-1xl font-serif">T</span></p></a>
+    return (
+        <header className="flex  space-x-2 md:space-x-10 bg-black p-10 justify-between items-center">
+            <div className="flex space-x-6 items-center">
+                <a href="/">
+                    <img src="http://www.pngall.com/wp-content/uploads/4/Netflix-Logo-HD.png"
+                        width={100}
+                        height={100}
+                        className="cursor-pointer object-contain"
+                    />
+                </a>
+                <LargeScreenNav />
             </div>
-        </div>
+            <div>
+                <UserLogin />
+            </div>
+            <SmallScreenNav />
+        </header>
     )
 }

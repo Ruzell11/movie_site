@@ -5,7 +5,7 @@ import { paramsObj, userSignUpRequest } from './services';
 import { useMutation } from '@tanstack/react-query';
 
 
-export const SignupForm: React.FC = () => {
+export const SignupForm: React.FC<{}> = () => {
     const [form] = Form.useForm();
 
    const {mutate , isLoading } = useToGetUserRequest();
